@@ -6,11 +6,11 @@ import { rollDice, getRandomBlock, logRollResult, getRandomItem } from "./utils.
  * Executa a lógica principal da corrida
  * @param {Object} p1 - Objeto do Jogador 1
  * @param {Object} p2 - Objeto do Jogador 2 (CPU)
- * @param {Number} totalRounds - Quantidade de rodadas definidas pelo usuário
+ * @param {Number} totalRounds - Quantidade de rodadas
  */
 export async function runRace(p1, p2, totalRounds) {
   for (let round = 1; round <= totalRounds; round++) {
-    // Cabeçalho da rodada estilizado
+    // Cabeçalho da rodada com estilo de informação
     const roundTitle = `─── ROUND ${round.toString().padStart(2, '0')} DE ${totalRounds.toString().padStart(2, '0')} 🏁 ───`;
     console.log(`\n${styles.paint(styles.info, roundTitle)}`);
 
@@ -38,6 +38,8 @@ export async function runRace(p1, p2, totalRounds) {
       total2 += await applyItemEffect(p2);
 
       // --- Verificação de Vencedor da Rodada ---
+      console.log(`${styles.paint(styles.dim, `Total Final: ${p1.NOME} (${total1}) vs ${p2.NOME} (${total2})`)}`);
+
       if (total1 > total2) {
         console.log(styles.paint(styles.success, `✨ ${p1.NOME} ganhou a rodada!`));
         p1.PONTOS++;
@@ -68,14 +70,13 @@ export async function runRace(p1, p2, totalRounds) {
       }
     }
     
-    // Pausa dramática para leitura do usuário
+    // Pequena pausa para o usuário acompanhar o log
     await new Promise(r => setTimeout(r, 800));
   }
 }
 
 /**
  * Função auxiliar para aplicar itens e retornar o modificador de valor
- * Centraliza a lógica para evitar repetição de código
  */
 async function applyItemEffect(player) {
   const item = await getRandomItem();
@@ -90,25 +91,26 @@ async function applyItemEffect(player) {
 }
 
 /**
- * Exibe o placar final com bordas duplas preservadas e cores integradas
+ * Exibe o placar final estilizado
  */
 export async function declareWinner(p1, p2) {
-  const line = "═════════════════════════════════════════";
+  const line = "-".repeat(41);
+  console.log(`\n${styles.paint(styles.info, `+${line}+`)}`);
+  console.log(`${styles.paint(styles.info, `|`)} ${styles.paint(styles.bold, "PLACAR FINAL".padStart(26).padEnd(39))} ${styles.paint(styles.info, `|`)}`);
+  console.log(`${styles.paint(styles.info, `+${line}+`)}`);
   
-  // Placar estilizado com as bordas duplas ASCII milimétricas
-  console.log(`\n${styles.info}╔${line}╗`);
-  console.log(`║${"RESULTADO FINAL".padStart(28).padEnd(41)}║`);
-  console.log(`╠${line}╣`);
-  console.log(`║ ${p1.NOME.padEnd(15)} : ${p1.PONTOS.toString().padStart(2)} pontos ${" ".padEnd(12)}║`);
-  console.log(`║ ${p2.NOME.padEnd(15)} : ${p2.PONTOS.toString().padStart(2)} pontos ${" ".padEnd(12)}║`);
-  console.log(`╚${line}╝${styles.reset}`);
+  const score1 = `${p1.NOME.padEnd(15)} : ${p1.PONTOS} pontos`;
+  const score2 = `${p2.NOME.padEnd(15)} : ${p2.PONTOS} pontos`;
+  
+  console.log(`${styles.paint(styles.info, `|`)} ${score1.padEnd(39)} ${styles.paint(styles.info, `|`)}`);
+  console.log(`${styles.paint(styles.info, `|`)} ${score2.padEnd(39)} ${styles.paint(styles.info, `|`)}`);
+  console.log(`${styles.paint(styles.info, `+${line}+`)}`);
 
-  const winner = p1.PONTOS > p2.PONTOS ? p1.NOME : p2.PONTOS > p1.PONTOS ? p2.NOME : "EMPATE";
-  
-  if (winner === "EMPATE") {
-    console.log(styles.paint(styles.warning, "\n🤝 EMPATE TÉCNICO!"));
+  if (p1.PONTOS > p2.PONTOS) {
+    console.log(`\n${styles.paint(styles.success, `🌟 ${p1.NOME.toUpperCase()} É O GRANDE CAMPEÃO! 🏆`)}\n`);
+  } else if (p2.PONTOS > p1.PONTOS) {
+    console.log(`\n${styles.paint(styles.success, `🌟 ${p2.NOME.toUpperCase()} É O GRANDE CAMPEÃO! 🏆`)}\n`);
   } else {
-    // Destaque para o campeão em verde vibrante
-    console.log(styles.paint(styles.success, `\n🏆 ${winner.toUpperCase()} VENCEU A CORRIDA! 🏁\n`));
+    console.log(`\n${styles.paint(styles.warning, "🏁 A CORRIDA TERMINOU EM EMPATE!")}\n`);
   }
 }

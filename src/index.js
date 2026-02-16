@@ -1,54 +1,79 @@
-// src/index.js
-import readline from "readline/promises";
-import { stdin as input, stdout as output } from "process";
+import readline from "readline";
 import { characters } from "./modules/characters.js";
 import { runRace, declareWinner } from "./modules/engine.js";
+import { styles } from "./modules/styles.js";
 
-const rl = readline.createInterface({ input, output });
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+const ask = (q) => new Promise((resolve) => rl.question(q, resolve));
 
 async function main() {
-  console.log("🎮 Bem-vindo ao Mario Kart Simulator JS! 🎮\n");
+  console.clear();
+  
+  // Banner usando o styles.warning (amarelo) e styles.bold
+  const bannerLine = "═════════════════════════════════════════";
+  console.log(styles.paint(styles.warning, `╔${bannerLine}╗`));
+  console.log(styles.paint(styles.warning, `║       🏎️  MARIO KART SIMULATOR JS 🏎️      ║`));
+  console.log(styles.paint(styles.warning, `╚${bannerLine}╝`));
 
-  // 1. Mostrar opções de personagens
-  console.log("Escolha seu piloto:");
-  characters.forEach((char, index) => {
-    console.log(
-      `${index + 1}. ${char.NOME} (Vel: ${char.VELOCIDADE}, Man: ${
-        char.MANOBRABILIDADE
-      }, Pod: ${char.PODER})`
-    );
-  });
-
-  // 2. Capturar entrada do usuário
-  let playerChoice = 0;
-  while (true) {
-    const answer = await rl.question("\nDigite o número do seu piloto (1-4): ");
-    playerChoice = parseInt(answer) - 1;
+  console.log(`\n${styles.paint(styles.bold, "PILOTOS DISPONÍVEIS:")}`);
+  console.log("┌────┬──────────────┬─────┬─────┬─────┐");
+  console.log("│ ID │ Nome         │ VEL │ MAN │ POD │");
+  console.log("├────┼──────────────┼─────┼─────┼─────┤");
+  
+  characters.forEach((c, i) => {
+    const id = (i + 1).toString().padEnd(2);
+    const nome = c.NOME.padEnd(12);
+    const vel = c.VELOCIDADE.toString().padStart(3);
+    const man = c.MANOBRABILIDADE.toString().padStart(3);
+    const pod = c.PODER.toString().padStart(3);
     
-    if (playerChoice >= 0 && playerChoice < characters.length) {
-      break;
-    }
-    console.log("❌ Opção inválida. Tente novamente.");
-  }
+    // Aplicando a cor específica de cada piloto na tabela
+    const nomeColorido = styles.paint(c.COR, nome);
+    console.log(`│ ${id} │ ${nomeColorido} │ ${vel} │ ${man} │ ${pod} │`);
+  });
+  console.log("└────┴──────────────┴─────┴─────┴─────┘");
 
-  const player1 = characters[playerChoice];
-  
-  // 3. Escolher oponente aleatório (mas que não seja o mesmo player)
-  let opponentChoice;
-  do {
-    opponentChoice = Math.floor(Math.random() * characters.length);
-  } while (opponentChoice === playerChoice);
-  
-  const player2 = characters[opponentChoice];
+  // 1. Escolha do Piloto
+  const choice = await ask("\n👉 Escolha o ID do seu piloto: ");
+  const p1Index = parseInt(choice) - 1;
+  const p1 = characters[p1Index] || characters[0];
 
-  console.log(`\n✅ Você escolheu: ${player1.NOME}`);
-  console.log(`🥊 Seu oponente será: ${player2.NOME}`);
-  
-  await rl.question("\nPressione ENTER para iniciar a corrida! 🚦");
+  // 2. Escolha do Oponente
+  let cpuIdx;
+  do { 
+    cpuIdx = Math.floor(Math.random() * characters.length); 
+  } while (cpuIdx === p1Index);
+  const p2 = characters[cpuIdx];
 
-  // 4. Iniciar Corrida
-  await runRace(player1, player2);
-  await declareWinner(player1, player2);
+  // 3. Escolha das Rodadas
+  const roundsInput = await ask("🏁 Quantas rodadas? (Padrão 5): ");
+  const rounds = parseInt(roundsInput) || 5;
+
+  console.log(`\n${styles.paint(styles.info, `[!] Preparando pista para ${p1.NOME} vs ${p2.NOME}...`)}`);
+  
+  await ask(`\n${styles.paint(styles.bold, "🏁 Sente no cockpit e pressione \x1b[33mENTER\x1b[0m para a largada! 🚥 ")}`);
+
+  // --- CONTAGEM REGRESSIVA ANIMADA COM FAROL ---
+  console.clear();
+  console.log(styles.paint(styles.error, "\n  🔴 3..."));
+  await new Promise(r => setTimeout(r, 700));
+  
+  console.clear();
+  console.log(styles.paint(styles.warning, "\n  🟡 2..."));
+  await new Promise(r => setTimeout(r, 700));
+  
+  console.clear();
+  console.log(styles.paint(styles.success, "\n  🟢 1..."));
+  await new Promise(r => setTimeout(r, 700));
+  
+  console.clear();
+  console.log(styles.paint(styles.success, styles.bold + "\n  🚥 GO! 🏎️💨\n"));
+  await new Promise(r => setTimeout(r, 500)); 
+  // -----------------------------------
+
+  // 4. Início da Corrida
+  await runRace(p1, p2, rounds);
+  await declareWinner(p1, p2);
 
   rl.close();
 }
