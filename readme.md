@@ -1,134 +1,103 @@
-<!--START_SECTION:header-->
-<div align="center">
-  <p align="center">
-    <img 
-      alt="DIO Education" 
-      src="./.github/assets/logo.webp" 
-      width="100px" 
-    />
-    <h1>Formação: NodeJS Developer</h1>
-  </p>
-</div>
-<!--END_SECTION:header-->
+<h1>Desafio de projeto do Felipão: Mario Kart.JS</h1>
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=DIO&message=Education&color=E94D5F&labelColor=202024" alt="DIO Project" />
-  <a href="LICENSE"><img  src="https://img.shields.io/static/v1?label=License&message=MIT&color=E94D5F&labelColor=202024" alt="License"></a>
-</p>
+  <table>
+        <tr>
+            <td>
+                <img src="./docs/header.gif" alt="Mario Kart" width="200">
+            </td>
+            <td>
+                <b>Objetivo:</b>
+                <p>Mario Kart é uma série de jogos de corrida desenvolvida e publicada pela Nintendo. Nosso desafio será criar uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, levando em consideração as regras e mecânicas abaixo.</p>
+            </td>
+        </tr>
+    </table>
 
-<!--  -->
-<table align="center">
-<thead>
-  <tr>
-    <td>
-        <p align="center">Expert</p>
-        <a href="https://github.com/felipeAguiarCode">
-        <img src="https://avatars0.githubusercontent.com/u/37452836?v=3&s=115" alt="@felipeAguiarCode"><br>
-        <sub>@felipeAguiarCode</sub>
-      </a>
-    </td>
-    <td colspan="3">
-    <p>Desenvolvendo soluções fullstack a mais de 10 anos!</p>
-      <a 
-      href="https://www.linkedin.com/in/felipe-me/" 
-      align="center">
-           <img 
-            align="center" 
-            alt="Material de Apoio" 
-            src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"
-            >
-        </a>
-    </td>
-  </tr>
-</thead>
-</table>
-<!--  -->
+<h2>Players</h2>
+      <table style="border-collapse: collapse; width: 800px; margin: 0 auto;">
+        <tr>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Mario</p>
+                <img src="./docs/mario.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 4</p>
+                <p>Manobrabilidade: 3</p>
+                <p>Poder: 3</p>
+            </td>
+             <td style="border: 1px solid black; text-align: center;">
+                <p>Peach</p>
+                <img src="./docs/peach.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 3</p>
+                <p>Manobrabilidade: 4</p>
+                <p>Poder: 2</p>
+            </td>
+              <td style="border: 1px solid black; text-align: center;">
+                <p>Yoshi</p>
+                <img src="./docs/yoshi.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 2</p>
+                <p>Manobrabilidade: 4</p>
+                <p>Poder: 3</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Bowser</p>
+                <img src="./docs/bowser.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 5</p>
+                <p>Manobrabilidade: 2</p>
+                <p>Poder: 5</p>
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Luigi</p>
+                <img src="./docs/luigi.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 3</p>
+                <p>Manobrabilidade: 4</p>
+                <p>Poder: 4</p>
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Donkey Kong</p>
+                <img src="./docs/dk.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 2</p>
+                <p>Manobrabilidade: 2</p>
+                <p>Poder: 5</p>
+            </td>
+        </tr>
+    </table>
 
-<div align="center">
-  <h2>💻 Módulos</h2>
-</div>
+<p></p>
 
-<div align="center">
-<table>
-  <thead>
-    <tr align="left">
-      <th>#</th>
-      <th>Módulo</th>
-      <th>Materiais</th>
-    </tr>
-  </thead>
-  <tbody align="left">
-    <tr>
-      <td>01</td>
-      <td>📁 Fundamentos NodeJS</td>
-      <td align="center">
-        <a href="">
-           <img 
-              align="center" 
-              alt="Material de Apoio" 
-              src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge"
-            >
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>02</td>
-      <td>📁 Modulo2</td>
-      <td align="center">
-        <a href="">
-           <img 
-            align="center" 
-            alt="Material de Apoio" 
-            src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge"
-            >
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>03</td>
-      <td>📁 Modulo3</td>
-      <td align="center">
-        <a href="">
-           <img 
-            align="center" 
-            alt="Material de Apoio" 
-            src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge"
-            >
-        </a>
-      </td>    
-    </tr>
-    <tr>
-      <td>04</td>
-      <td>📁 Modulo4</td>
-      <td align="center">
-        <a href="">
-           <img 
-            align="center" 
-            alt="Material de Apoio" 
-            src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge"
-            >
-        </a>
-      </td>    
-    </tr>
-  </tbody>
-  <tfoot></tfoot>
-</table>
-</div>
+<h3>🕹️ Regras & mecânicas:</h3>
 
-<!--START_SECTION:footer-->
-<br/>
-<br/>
-<p align="center">
-  ⌨️ Feito com 💜 by DIO
-</p>
+<b>Jogadores:</b>
 
-<br />
-<br />
+<input type="checkbox" id="jogadores-item" />
+<label for="jogadores-item">O Computador deve receber dois personagens para disputar a corrida em um objeto cada</label>
 
-<p align="center">
-  <a href="https://www.dio.me/" target="_blank">
-    <img align="center" src="./.github/assets/footer.png" alt="banner"/>
-  </a>
-</p>
+<b>Pistas:</b>
 
-<!--END_SECTION:footer-->
+<ul>
+  <li><input type="checkbox" id="pistas-1-item" /> <label for="pistas-1-item">Os personagens irão correr em uma pista aleatória de 5 rodadas</label></li>
+  <li><input type="checkbox" id="pistas-2-item" /> <label for="pistas-2-item">A cada rodada, será sorteado um bloco da pista que pode ser uma reta, curva ou confronto</label>
+    <ul>
+      <li><input type="checkbox" id="pistas-2-1-item" /> <label for="pistas-2-1-item">Caso o bloco da pista seja uma RETA, o jogador deve jogar um dado de 6 lados e somar o atributo VELOCIDADE, quem vencer ganha um ponto</label></li>
+      <li><input type="checkbox" id="pistas-2-2-item" /> <label for="pistas-2-2-item">Caso o bloco da pista seja uma CURVA, o jogador deve jogar um dado de 6 lados e somar o atributo MANOBRABILIDADE, quem vencer ganha um ponto</label></li>
+      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Caso o bloco da pista seja um CONFRONTO, o jogador deve jogar um dado de 6 lados e somar o atributo PODER, quem perder, perde um ponto</label></li>
+      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Nenhum jogador pode ter pontuação negativa (valores abaixo de 0)</label></li>
+    </ul>
+  </li>
+</ul>
+
+<b>Condição de vitória:</b>
+
+<input type="checkbox" id="vitoria-item" />
+<label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label>

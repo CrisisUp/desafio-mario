@@ -1,0 +1,18 @@
+{
+  "name": "mario-kart",
+  "version": "1.0.0",
+  "description": "Simulador de corridas Mario Kart no Terminal",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "game",
+    "simulator"
+  ],
+  "author": "Seu Nome",
+  "license": "ISC"
+}

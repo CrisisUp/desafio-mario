@@ -1,0 +1,9 @@
+# Dependências do Node
+node_modules/
+
+# Logs de erro (se houver)
+npm-debug.log
+yarn-error.log
+
+# Arquivos de sistema do Mac
+.DS_Store
